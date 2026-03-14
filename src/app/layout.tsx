@@ -10,6 +10,10 @@ export const metadata: Metadata = {
     "Sarkar Press is a super speciality modern printing company in Patashpur, West Bengal. Offset, digital, flex, and customized printing with unmatched quality.",
   keywords:
     "printing press, offset printing, digital printing, flex printing, West Bengal, Patashpur",
+  icons: {
+    icon: "/Favicon.jpg",
+    apple: "/Favicon.jpg",
+  },
 };
 
 export default function RootLayout({

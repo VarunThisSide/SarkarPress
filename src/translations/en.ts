@@ -66,7 +66,7 @@ const en = {
   section_why_choose: "Why Choose Us",
   section_built_for: "Built for Every Print Need",
   section_quality_speed:
-    "Quality, speed, and affordability — all under one roof.",
+    "Quality, speed, and affordability. All under one roof.",
   section_equipment_eyebrow: "Equipment",
   section_what_we_do: "What We Do",
   section_trusted_by: "Trusted By",
@@ -84,7 +84,7 @@ const en = {
     "From government bodies to private enterprises, our diverse clientele trusts us for their most important communications. We handle everything from small business cards to large-format flex banners and sophisticated offset print runs.",
   about_missions_title: "Our Mission",
   about_mission:
-    "To provide premium quality printing at affordable prices with unmatched speed and reliability — serving clients across West Bengal and beyond.",
+    "To provide premium quality printing at affordable prices with unmatched speed and reliability, serving clients across West Bengal and beyond.",
   about_contact_title: "Contact Us",
   about_phone: "Phone: +91 96790 91725",
   about_email_label: "Email: sarkarpress.20@gmail.com",
@@ -130,10 +130,18 @@ const en = {
   payments_cash_title: "Cash Payment",
   payments_cash_desc: "Cash payments are accepted at our office in Patashpur.",
   payments_cash_visit: "Visit us at:",
-  payments_cash_address: "Patashpur, Purba Medinipur\nWest Bengal – 721439",
+  payments_cash_address: "Patashpur, Purba Medinipur\nWest Bengal 721439",
   payments_note_title: "Payment Note",
   payments_note_desc:
     "Please mention your Order ID when making payment. Contact us at +91 96790 91725 for any payment queries.",
+  // CTA Strip
+  cta_title: "Ready to Start Your Print Project?",
+  cta_desc: "Contact us today for a free quote. Fast turnaround, premium quality, and prices that fit your budget.",
+  cta_btn: "Get a Free Quote",
+
+  // Terms
+  nav_terms: "Terms & Conditions",
+  footer_terms: "Terms & Conditions",
 };
 
 export default en;

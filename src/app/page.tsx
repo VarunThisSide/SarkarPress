@@ -166,8 +166,19 @@ export default function HomePage() {
             <div className="section-eyebrow">{t("section_trusted_by")}</div>
             <h2 className="section-title">{t("clients_title")}</h2>
           </div>
+          <LogoMarquee />
         </div>
-        <LogoMarquee />
+      </section>
+
+      {/* CTA STRIP */}
+      <section className="cta-strip">
+        <div className="container">
+          <h2 className="cta-strip-title">{t("cta_title")}</h2>
+          <p className="cta-strip-desc">{t("cta_desc")}</p>
+          <Link href="/orders" className="btn-white">
+            {t("cta_btn")} &rarr;
+          </Link>
+        </div>
       </section>
     </>
   );

@@ -161,7 +161,7 @@ function PaymentsContent() {
                 <strong>
                   Patashpur, Purba Medinipur
                   <br />
-                  West Bengal – 721439
+                  West Bengal 721439
                 </strong>
               </div>
             </div>

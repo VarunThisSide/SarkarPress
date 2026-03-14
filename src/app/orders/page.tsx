@@ -11,7 +11,6 @@ function generateOrderId(): string {
   const rand = Math.random().toString(36).toUpperCase().slice(2, 6);
   return `SP-${date}-${rand}`;
 }
-console.log("Supabase configured:", isSupabaseConfigured);
 export default function OrdersPage() {
   const { t } = useTranslation();
   const router = useRouter();
@@ -53,27 +52,6 @@ export default function OrdersPage() {
         <h1 className="page-hero-title">{t("orders_title")}</h1>
         <p className="page-hero-subtitle">{t("orders_subtitle")}</p>
       </section>
-
-      {!isSupabaseConfigured && (
-        <div
-          style={{
-            background: "rgba(201,151,28,0.1)",
-            border: "1px solid rgba(201,151,28,0.4)",
-            borderRadius: 10,
-            padding: "16px 24px",
-            maxWidth: 600,
-            margin: "32px auto 0",
-            textAlign: "center",
-            fontSize: "0.92rem",
-            color: "#7a5e00",
-          }}
-        >
-          ⚠️ <strong>Supabase not configured yet.</strong> Add your{" "}
-          <code>NEXT_PUBLIC_SUPABASE_URL</code> and{" "}
-          <code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code> to <code>.env.local</code>.
-          Orders will still redirect to payment.
-        </div>
-      )}
 
       <section className="section">
         <div className="container">

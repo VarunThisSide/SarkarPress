@@ -554,123 +554,76 @@ body {
   line-height: 1.65;
 }
 
-/* ===== CLIENTS SCROLLER ===== */
-.clients-track {
-  overflow: hidden;
-  position: relative;
-  padding: 20px 0;
-}
-
-.clients-slider {
+/* ===== CLIENTS GRID ===== */
+.clients-grid {
   display: flex;
-  gap: 48px;
-  width: max-content;
-  animation: scroll-clients 22s linear infinite;
-}
-
-.clients-slider:hover {
-  animation-play-state: paused;
-}
-
-@keyframes scroll-clients {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 28px 56px;
+  padding: 16px 0 8px;
 }
 
 .client-logo {
-  height: 72px;
+  height: 64px;
   width: auto;
+  max-width: 160px;
   object-fit: contain;
-  opacity: 0.65;
+  opacity: 0.55;
+  filter: grayscale(80%);
   transition:
     opacity var(--transition),
+    filter var(--transition),
     transform var(--transition);
-  filter: grayscale(60%);
 }
 
 .client-logo:hover {
   opacity: 1;
   filter: none;
-  transform: scale(1.06);
+  transform: scale(1.07);
 }
 
-/* ===== LOGO MARQUEE ===== */
-.marquee {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  padding: 40px 0;
+/* ===== CTA STRIP ===== */
+.cta-strip {
+  background: var(--red);
+  padding: 72px 0;
+  text-align: center;
 }
 
-.marquee-track {
-  display: flex;
-  width: max-content;
-  gap: 80px;
-  animation: marquee-scroll 30s linear infinite;
-  will-change: transform;
+.cta-strip-title {
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--white);
+  margin-bottom: 14px;
 }
 
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
+.cta-strip-desc {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 520px;
+  margin: 0 auto 36px;
+  line-height: 1.65;
 }
 
-.marquee-logo {
-  height: 60px;
-  flex-shrink: 0;
-  opacity: 0.8;
-  filter: grayscale(100%);
-  transition: all 0.3s ease;
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  color: var(--red);
+  font-weight: 700;
+  font-size: 0.97rem;
+  padding: 14px 34px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 
-.marquee-logo:hover {
-  opacity: 1;
-  filter: grayscale(0%);
-  transform: scale(1.05);
-}
-
-@keyframes marquee-scroll {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-.marquee::before,
-.marquee::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 120px;
-  height: 100%;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.marquee::before {
-  left: 0;
-  background: linear-gradient(to right, #fafaf8, transparent);
-}
-
-.marquee::after {
-  right: 0;
-  background: linear-gradient(to left, #fafaf8, transparent);
-}
-
-@media (max-width: 768px) {
-  .marquee-track {
-    gap: 40px;
-    animation: marquee-scroll 45s linear infinite;
-  }
-
-  .marquee-logo {
-    height: 45px;
-  }
+.btn-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
 }
 
 /* ===== FOOTER ===== */
@@ -791,6 +744,53 @@ body {
   color: rgba(255, 255, 255, 0.55);
   max-width: 520px;
   margin: 0 auto;
+}
+
+/* ===== TERMS PAGE ===== */
+.terms-body {
+  max-width: 780px;
+  margin: 0 auto;
+  color: var(--ink-mid);
+  line-height: 1.75;
+}
+
+.terms-body h2 {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin: 40px 0 12px;
+}
+
+.terms-body p {
+  margin-bottom: 14px;
+  font-size: 0.97rem;
+}
+
+.terms-body ul {
+  padding-left: 22px;
+  margin-bottom: 14px;
+}
+
+.terms-body li {
+  margin-bottom: 8px;
+  font-size: 0.97rem;
+}
+
+.terms-body a {
+  color: var(--red);
+  text-decoration: none;
+}
+
+.terms-body a:hover {
+  text-decoration: underline;
+}
+
+.terms-updated {
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
 }
 
 /* ===== ORDERS FORM ===== */

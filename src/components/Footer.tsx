@@ -24,6 +24,7 @@ export default function Footer() {
           <Link href="/about" className="footer-link">{t('nav_about')}</Link>
           <Link href="/orders" className="footer-link">{t('nav_orders')}</Link>
           <Link href="/payments" className="footer-link">{t('nav_payments')}</Link>
+          <Link href="/terms" className="footer-link">{t('footer_terms')}</Link>
         </div>
 
         {/* Contact */}
@@ -36,7 +37,7 @@ export default function Footer() {
             ✉️ <a href="mailto:sarkarpress.20@gmail.com">sarkarpress.20@gmail.com</a>
           </div>
           <div className="footer-contact-item">
-            📍 Patashpur, Purba Medinipur<br />West Bengal – 721439
+            📍 Patashpur, Purba Medinipur<br />West Bengal 721439
           </div>
           <div className="footer-map" style={{ marginTop: 14 }}>
             <iframe

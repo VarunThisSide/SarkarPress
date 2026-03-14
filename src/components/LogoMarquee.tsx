@@ -13,21 +13,17 @@ const logos = [
 ];
 
 export default function LogoMarquee() {
-  const loop = [...logos, ...logos];
-
   return (
-    <div className="marquee">
-      <div className="marquee-track">
-        {loop.map((logo, i) => (
-          <img
-            key={i}
-            src={logo.src}
-            alt={logo.alt}
-            className="marquee-logo"
-            loading="eager"
-          />
-        ))}
-      </div>
+    <div className="clients-grid">
+      {logos.map((logo, i) => (
+        <img
+          key={i}
+          src={logo.src}
+          alt={logo.alt}
+          className="client-logo"
+          loading="eager"
+        />
+      ))}
     </div>
   );
 }

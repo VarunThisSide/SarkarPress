@@ -1,65 +1,174 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Link from "next/link";
+import Image from "next/image";
+import { useTranslation } from "@/context/TranslationContext";
+import AnimatedStat from "@/components/AnimatedStat";
+import LogoMarquee from "@/components/LogoMarquee";
+
+const machines = [
+  { src: "/xerox-docucolor-240-pic-2-lg.jpg", alt: "Xerox DocuColor" },
+  { src: "/PRINTING_MACHINES.webp", alt: "Printing Machine" },
+  {
+    src: "/fully-automatic-paper-cutting-machine.png",
+    alt: "Paper Cutting Machine",
+  },
+  { src: "/bizhub-808-1200x900.jpg", alt: "Bizhub 808" },
+  {
+    src: "/epson-surecolor-sc-t5430-500x500-500x500.webp",
+    alt: "Epson SureColor",
+  },
+  {
+    src: "/heavy-duty-die-punching-machine-500x500.webp",
+    alt: "Die Punching Machine",
+  },
+];
+
+
+const serviceKeys = [
+  "service1",
+  "service2",
+  "service3",
+  "service4",
+  "service5",
+  "service6",
+  "service7",
+  "service8",
+  "service9",
+] as const;
+
+const featureIcons = ["🖨️", "✨", "⚡", "💰"];
+
+export default function HomePage() {
+  const { t } = useTranslation();
+
+  const features = [
+    { icon: featureIcons[0], title: t("feat1_title"), desc: t("feat1_desc") },
+    { icon: featureIcons[1], title: t("feat2_title"), desc: t("feat2_desc") },
+    { icon: featureIcons[2], title: t("feat3_title"), desc: t("feat3_desc") },
+    { icon: featureIcons[3], title: t("feat4_title"), desc: t("feat4_desc") },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      {/* HERO */}
+      <section className="hero">
+        <div className="hero-content">
+          <div className="hero-badge">PATASHPUR · WEST BENGAL</div>
+          <h1 className="hero-title">
+            <span>{t("hero_title")}</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+          <p className="hero-subtitle">{t("hero_subtitle")}</p>
+          <p className="hero-tagline">{t("hero_tagline")}</p>
+          <div className="hero-actions">
+            <Link href="/orders" className="btn-primary">
+              {t("hero_cta")} →
+            </Link>
+            <Link href="/about" className="btn-secondary">
+              {t("nav_about")}
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* STATS */}
+      <div className="stats-bar">
+        <div className="stats-inner">
+          <AnimatedStat
+            target={25}
+            suffix="+"
+            label="Years Experience"
+            duration={1600}
+          />
+          <AnimatedStat
+            target={500}
+            suffix="+"
+            label="Clients Served"
+            duration={2000}
+          />
+          <AnimatedStat
+            target={9}
+            suffix=""
+            label="Print Services"
+            duration={1200}
+          />
+          <AnimatedStat
+            target={10}
+            suffix="+"
+            label="Machines"
+            duration={1400}
+          />
         </div>
-      </main>
-    </div>
+      </div>
+
+      {/* FEATURES */}
+      <section className="section">
+        <div className="container">
+          <div className="section-header">
+            <div className="section-eyebrow">{t("section_why_choose")}</div>
+            <h2 className="section-title">{t("section_built_for")}</h2>
+            <p className="section-desc">{t("section_quality_speed")}</p>
+          </div>
+          <div className="features-grid">
+            {features.map((f, i) => (
+              <div className="feature-card" key={i}>
+                <div className="feature-icon">{f.icon}</div>
+                <div className="feature-title">{f.title}</div>
+                <div className="feature-desc">{f.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MACHINES */}
+      <section className="section section-alt">
+        <div className="container">
+          <div className="section-header">
+            <div className="section-eyebrow">
+              {t("section_equipment_eyebrow")}
+            </div>
+            <h2 className="section-title">{t("machines_title")}</h2>
+          </div>
+          <div className="machines-grid">
+            {machines.map((m, i) => (
+              <div className="machine-card" key={i}>
+                <img src={m.src} alt={m.alt} />
+              </div>
+            ))}
+          </div>
+          <p className="machines-more">{t("machines_more")}</p>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="section section-dark">
+        <div className="container">
+          <div className="section-header">
+            <div className="section-eyebrow">{t("section_what_we_do")}</div>
+            <h2 className="section-title">{t("services_title")}</h2>
+          </div>
+          <div className="services-list">
+            {serviceKeys.map((key, i) => (
+              <div className="service-card" key={key}>
+                <div className="service-number">0{i + 1}</div>
+                <div className="service-text">{t(key)}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CLIENTS */}
+      <section className="section">
+        <div className="container">
+          <div className="section-header">
+            <div className="section-eyebrow">{t("section_trusted_by")}</div>
+            <h2 className="section-title">{t("clients_title")}</h2>
+          </div>
+        </div>
+        <LogoMarquee />
+      </section>
+    </>
   );
 }

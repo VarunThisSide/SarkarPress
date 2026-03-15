@@ -87,6 +87,12 @@ export default function HomePage() {
             duration={2000}
           />
           <AnimatedStat
+            target={1000000}
+            suffix="+"
+            label="Prints Delivered"
+            duration={1400}
+          />
+          <AnimatedStat
             target={20}
             suffix="+"
             label="Machines"

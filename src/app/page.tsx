@@ -75,25 +75,19 @@ export default function HomePage() {
       <div className="stats-bar">
         <div className="stats-inner">
           <AnimatedStat
-            target={25}
+            target={50}
             suffix="+"
             label="Years Experience"
             duration={1600}
           />
           <AnimatedStat
-            target={500}
+            target={5000}
             suffix="+"
             label="Clients Served"
             duration={2000}
           />
           <AnimatedStat
-            target={9}
-            suffix=""
-            label="Print Services"
-            duration={1200}
-          />
-          <AnimatedStat
-            target={10}
+            target={20}
             suffix="+"
             label="Machines"
             duration={1400}

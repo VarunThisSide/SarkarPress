@@ -1,5 +1,9 @@
 "use client";
 
+import { motion } from "motion/react";
+import React from "react";
+import { ImagesSlider } from "@/components/ui/images-slider";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "@/context/TranslationContext";
@@ -49,27 +53,43 @@ export default function HomePage() {
     { icon: featureIcons[3], title: t("feat4_title"), desc: t("feat4_desc") },
   ];
 
+  const sliderImages = [
+    "/IMG_2292.jpg",
+    "/IMG_2298.jpg",
+    "/IMG_2305.jpg",
+  ];
+
   return (
     <>
-      {/* HERO */}
-      <section className="hero">
-        <div className="hero-content">
-          <div className="hero-badge">PATASHPUR · WEST BENGAL</div>
-          <h1 className="hero-title">
-            <span>{t("hero_title")}</span>
-          </h1>
-          <p className="hero-subtitle">{t("hero_subtitle")}</p>
-          <p className="hero-tagline">{t("hero_tagline")}</p>
-          <div className="hero-actions">
-            <Link href="/orders" className="btn-primary">
-              {t("hero_cta")} →
-            </Link>
-            <Link href="/about" className="btn-secondary">
-              {t("nav_about")}
-            </Link>
+
+      <ImagesSlider
+        className="h-[85vh] min-h-125 w-full"
+        images={sliderImages}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: -80 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="z-50 flex flex-col justify-center items-center text-center px-4"
+        >
+          <div className="hero-content flex flex-col justify-centre items-start text-center px-4">
+            <div className="hero-badge">PATASHPUR · WEST BENGAL</div>
+            <h1 className="hero-title">
+              <span>{t("hero_title")}</span>
+            </h1>
+            <p className="hero-subtitle">{t("hero_subtitle")}</p>
+            <p className="hero-tagline">{t("hero_tagline")}</p>
+            <div className="hero-actions">
+              <Link href="/orders" className="btn-primary">
+                {t("hero_cta")} →
+              </Link>
+              <Link href="/about" className="btn-secondary">
+                {t("nav_about")}
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      </ImagesSlider>
 
       {/* STATS */}
       <div className="stats-bar">

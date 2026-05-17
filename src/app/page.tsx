@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import React from "react";
 import { ImagesSlider } from "@/components/ui/images-slider";
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
+import { Timeline } from "@/components/ui/timeline";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -46,6 +47,31 @@ const featureIcons = ["🖨️", "✨", "⚡", "💰"];
 
 export default function HomePage() {
   const { t } = useTranslation();
+
+  // Inside your service mapping in page.tsx
+  const featuresData = serviceKeys.map((key, index) => {
+    // Split the translation into Title and Description
+    // (Assuming your translation string looks like "Title: Description")
+    const fullText = t(key);
+    const [title, ...descParts] = fullText.split(":");
+    const description = descParts.join(":");
+
+    return {
+      title: (index + 1).toString().padStart(2, '0'),
+      content: (
+        <div className="mb-12 group">
+          <h4 className="text-[#e8152a] text-4xl md:text-2xl font-black mb-3 tracking-tight group-hover:translate-x-1 transition-transform duration-300">
+            {title}
+          </h4>
+          <p className="text-zinc-400 text-2xl md:text-base leading-relaxed max-w-xl">
+            {description}
+          </p>
+          {/* Optional: Add a subtle divider or accent */}
+          <div className="mt-6 h-[10px] w-12 group-hover:w-24 transition-all duration-500" />
+        </div>
+      ),
+    };
+  });
 
   const stickyContent = [
     {
@@ -191,17 +217,16 @@ export default function HomePage() {
       {/* SERVICES */}
       <section className="section section-dark">
         <div className="container">
-          <div className="section-header">
-            <div className="section-eyebrow">{t("section_what_we_do")}</div>
-            <h2 className="section-title">{t("services_title")}</h2>
-          </div>
-          <div className="services-list">
+          {/* <div className="services-list">
             {serviceKeys.map((key, i) => (
               <div className="service-card" key={key}>
                 <div className="service-number">0{i + 1}</div>
                 <div className="service-text">{t(key)}</div>
               </div>
             ))}
+          </div> */}
+          <div className="relative w-full overflow-clip">
+            <Timeline data={featuresData} />
           </div>
         </div>
       </section>

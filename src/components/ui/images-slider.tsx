@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "motion/react";
-import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "motion/react"; // Make sure to use "framer-motion" if "motion/react" throws errors
+import React, { useEffect, useState, useCallback, useRef } from "react";
 
 export const ImagesSlider = ({
   images,
@@ -21,27 +21,31 @@ export const ImagesSlider = ({
   direction?: "up" | "down";
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [loading, setLoading] = useState(false);
   const [loadedImages, setLoadedImages] = useState<string[]>([]);
+  
+  // FIX 1: Use a ref instead of state to track loading. 
+  // This prevents the "synchronous setState in effect" error!
+  const isLoading = useRef(false); 
 
-  const handleNext = () => {
+  // Wrap in useCallback to keep references stable
+  const handleNext = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex + 1 === images.length ? 0 : prevIndex + 1
     );
-  };
+  }, [images.length]);
 
-  const handlePrevious = () => {
+  const handlePrevious = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex - 1 < 0 ? images.length - 1 : prevIndex - 1
     );
-  };
+  }, [images.length]);
 
-  useEffect(() => {
-    loadImages();
-  }, []);
+  const loadImages = useCallback(() => {
+    // Check the ref instead of state
+    if (loadedImages.length > 0 || isLoading.current) return;
 
-  const loadImages = () => {
-    setLoading(true);
+    isLoading.current = true; // Mutating a ref does NOT trigger a synchronous render
+    
     const loadPromises = images.map((image) => {
       return new Promise((resolve, reject) => {
         const img = new Image();
@@ -52,12 +56,20 @@ export const ImagesSlider = ({
     });
 
     Promise.all(loadPromises)
-      .then((loadedImages) => {
-        setLoadedImages(loadedImages as string[]);
-        setLoading(false);
+      .then((loaded) => {
+        setLoadedImages(loaded as string[]);
+        isLoading.current = false;
       })
-      .catch((error) => console.error("Failed to load images", error));
-  };
+      .catch((error) => {
+        console.error("Failed to load images", error);
+        isLoading.current = false;
+      });
+  }, [images, loadedImages.length]);
+
+  useEffect(() => {
+    loadImages();
+  }, [loadImages]);
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") {
@@ -69,8 +81,9 @@ export const ImagesSlider = ({
 
     window.addEventListener("keydown", handleKeyDown);
 
-    // autoplay
-    let interval: any;
+    // FIX 2: Replaced 'any' with the proper TypeScript ReturnType for intervals
+    let interval: ReturnType<typeof setInterval> | undefined;
+    
     if (autoplay) {
       interval = setInterval(() => {
         handleNext();
@@ -79,9 +92,9 @@ export const ImagesSlider = ({
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      clearInterval(interval);
+      if (interval) clearInterval(interval);
     };
-  }, []);
+  }, [autoplay, handleNext, handlePrevious]);
 
   const slideVariants = {
     initial: {

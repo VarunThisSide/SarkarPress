@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import React from "react";
 import { ImagesSlider } from "@/components/ui/images-slider";
+import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -46,11 +47,43 @@ const featureIcons = ["🖨️", "✨", "⚡", "💰"];
 export default function HomePage() {
   const { t } = useTranslation();
 
-  const features = [
-    { icon: featureIcons[0], title: t("feat1_title"), desc: t("feat1_desc") },
-    { icon: featureIcons[1], title: t("feat2_title"), desc: t("feat2_desc") },
-    { icon: featureIcons[2], title: t("feat3_title"), desc: t("feat3_desc") },
-    { icon: featureIcons[3], title: t("feat4_title"), desc: t("feat4_desc") },
+  const stickyContent = [
+    {
+      title: t("feat1_title"),
+      description: t("feat1_desc"),
+      content: (
+        <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--red-500),var(--orange-500))] text-white text-6xl">
+          {featureIcons[0]}
+        </div>
+      ),
+    },
+    {
+      title: t("feat2_title"),
+      description: t("feat2_desc"),
+      content: (
+        <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--zinc-700),var(--zinc-900))] text-white text-6xl">
+          {featureIcons[1]}
+        </div>
+      ),
+    },
+    {
+      title: t("feat3_title"),
+      description: t("feat3_desc"),
+      content: (
+        <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--blue-500),var(--indigo-500))] text-white text-6xl">
+          {featureIcons[2]}
+        </div>
+      ),
+    },
+    {
+      title: t("feat4_title"),
+      description: t("feat4_desc"),
+      content: (
+        <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--emerald-500),var(--teal-500))] text-white text-6xl">
+          {featureIcons[3]}
+        </div>
+      ),
+    },
   ];
 
   const sliderImages = [
@@ -129,14 +162,8 @@ export default function HomePage() {
             <h2 className="section-title">{t("section_built_for")}</h2>
             <p className="section-desc">{t("section_quality_speed")}</p>
           </div>
-          <div className="features-grid">
-            {features.map((f, i) => (
-              <div className="feature-card" key={i}>
-                <div className="feature-icon">{f.icon}</div>
-                <div className="feature-title">{f.title}</div>
-                <div className="feature-desc">{f.desc}</div>
-              </div>
-            ))}
+          <div className="w-full">
+            <StickyScroll content={stickyContent} />
           </div>
         </div>
       </section>

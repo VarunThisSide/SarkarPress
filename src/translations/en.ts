@@ -14,16 +14,16 @@ const en = {
 
   // Features
   feat1_title: "A Complete House of Quality Printing",
-  feat1_desc: "Made for catering to all your printing needs.",
+  feat1_desc: "We serve as your ultimate destination for every imaginable printing requirement, from high-volume corporate documents to personalized creative projects. Our facility is equipped to handle a vast array of formats and materials, ensuring that whether you need intricate stationery or massive outdoor branding, we provide a seamless, all-in-one solution that eliminates the need for multiple vendors. We take pride in being a comprehensive partner that understands the nuances of ink, paper, and design to bring your vision to life perfectly.",
   feat2_title: "Experience the Best Quality of Prints",
   feat2_desc:
-    "Harnessing cutting-edge tech for unparalleled print clarity. Crafted with premium materials for a professional finish.",
+    "By harnessing the power of cutting-edge digital and offset printing technology, we achieve a level of unparalleled clarity and color depth in every job we undertake. Every print is crafted using premium-grade materials and industry-leading inks to ensure a professional, high-end finish that stands the test of time. Our rigorous quality control process means that every gradient is smooth, every line is sharp, and every color is calibrated to perfection, giving your brand the prestigious look it deserves in a competitive market.",
   feat3_title: "Superior Speed of Service",
   feat3_desc:
-    "Swift turnaround times, ensuring your deadlines are met. Efficient processes guarantee quick delivery without compromise.",
+    "We understand that in the business world, time is your most valuable asset, which is why we have optimized our workflow to provide incredibly swift turnaround times without ever sacrificing quality. Our efficient automated processes and dedicated team guarantee that even the most complex deadlines are met with precision and reliability. From the moment you submit your design to the final delivery, we prioritize speed and communication, ensuring that your marketing materials or essential documents are in your hands exactly when you need them.",
   feat4_title: "Print with Confidence: Affordable Excellence!",
   feat4_desc:
-    "From business cards to banners, our budget-friendly printing solutions ensure you get the results you need at a price that fits your budget.",
+    "From professional business cards and corporate letterheads to massive promotional banners and signage, our budget-friendly printing solutions are designed to ensure you get world-class results at a price point that fits your financial plan. We believe that high-quality printing should be accessible to everyone, from local small businesses to large government organizations, which is why we offer transparent pricing and bulk discounts. You can move forward with your projects with total confidence, knowing that you are receiving the best value for your investment in the region.",
 
   // Machines
   machines_title: "Our Machines & Equipment",

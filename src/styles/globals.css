@@ -8,7 +8,7 @@
   --ink: #0f0f0f;
   --ink-mid: #2c2c2c;
   --ink-soft: #555;
-  --bg: #fafaf8;
+  --bg: #161616;
   --bg-subtle: #f4f1ed;
   --bg-card: #ffffff;
   --border: #e5e2dc;
@@ -402,7 +402,7 @@ body {
 .section-title {
   font-family: "Archivo Black", sans-serif;
   font-size: clamp(1.8rem, 4vw, 2.8rem);
-  color: var(--ink);
+  color: var(--white);
   line-height: 1.15;
   margin-bottom: 14px;
 }
@@ -413,7 +413,7 @@ body {
 
 .section-desc {
   font-size: 1.05rem;
-  color: var(--ink-soft);
+  color: var(--white);
   max-width: 560px;
   margin: 0 auto;
 }
